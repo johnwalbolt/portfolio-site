@@ -1,39 +1,38 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
+import './globals.css'
+import Navigation from '@/components/Navigation'
+import Footer from '@/components/Footer'
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+})
 
 export const metadata: Metadata = {
-  title: "John Walbolt — Product Designer",
-  description:
-    "Nearly 1 million downloads from products I designed and grew end to end.",
-};
+  title: 'John Walbolt — Product Designer',
+  description: 'Product designer with a background as a creator and producer. Designs digital products people love to use, with AI tools to rapidly craft, prototype, and ship.',
+  openGraph: {
+    title: 'John Walbolt — Product Designer',
+    description: 'Product designer with a background as a creator and producer. Uses AI tools to rapidly craft, prototype, and ship.',
+    type: 'website',
+  },
+}
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <Header />
-        <main className="pt-16">{children}</main>
+    <html lang="en" className={inter.variable}>
+      <body className="font-sans antialiased">
+        <Navigation />
+        <main className="min-h-screen">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>
-  );
+  )
 }

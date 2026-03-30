@@ -1,24 +1,102 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #1a1a1a;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-white text-primary;
+  }
+
+  ::selection {
+    @apply bg-accent/10 text-accent;
+  }
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@layer components {
+  .container-main {
+    @apply mx-auto max-w-content px-6 md:px-8;
+  }
+
+  .container-narrow {
+    @apply mx-auto max-w-narrow px-6 md:px-8;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
+  }
+
+  .case-study-card {
+    @apply relative overflow-hidden rounded-2xl bg-muted transition-all duration-500;
+  }
+
+  .case-study-card:hover {
+    @apply shadow-xl shadow-black/5;
+    transform: translateY(-4px);
+  }
+
+  .metric-card {
+    @apply rounded-xl bg-muted p-6 text-center h-full;
+  }
+
+  .tag {
+    @apply inline-block rounded-full bg-muted px-3 py-1 text-caption text-secondary;
+  }
+
+  .section-label {
+    @apply text-caption font-medium uppercase tracking-widest text-secondary;
+  }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+/* Smooth page transitions */
+.page-transition-enter {
+  opacity: 0;
+  transform: translateY(20px);
 }
 
-::selection {
-  background: #000;
-  color: #fff;
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d4d4d4;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a3a3a3;
+}
+
+/* Image placeholder styles */
+.img-placeholder {
+  @apply relative overflow-hidden bg-gradient-to-br from-neutral-100 to-neutral-200;
+}
+
+.img-placeholder::after {
+  content: '';
+  @apply absolute inset-0;
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.1) 50%,
+    rgba(255,255,255,0) 100%
+  );
 }
