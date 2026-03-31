@@ -250,7 +250,7 @@ export const caseStudies: CaseStudy[] = [
     timeline: 'Q1 2026',
     company: 'Pocket Pitch',
     year: '2026',
-    tags: ['UX Strategy', 'Interaction Design', 'Monetization', 'Accessibility', 'Mobile App'],
+    tags: ['UX Strategy', 'Interaction Design', 'Monetization', 'Mobile App'],
     heroColor: '#7C1A92',
     heroColorLight: '#f5d0fe',
     thumbnail: '/images/pocket-pitch-premium.png',
@@ -274,7 +274,7 @@ export const caseStudies: CaseStudy[] = [
         wideImage: true,
         caption: 'User flows highlighting discovery of premium and a successful upgrade.',
         title: 'Mapping every path to premium',
-        description: 'Before designing any screens, I mapped out the user flows for how and when users would discover the premium subscription. There were four initial discovery points: the onboarding screen, the upgrade button in the header of each screen, warmup scale\'s limited free selection, and practice score\'s blocked history. I wanted the flow to feel natural rather than pushy, so I laid out the discovery and payment steps to ensure users understood the value before being asked to pay. Ultimately I chose not to mention premium in the onboarding screen (because it felt too pushy) and instead I made sure onboarding mentioned the Warmup and Practice features that benefited the most from an upgrade to premium.',
+        description: 'Before designing any screens, I mapped out the user flows for how and when users would discover the premium subscription. The goal was to make it accessible from just about anywhere in the app. There were four types of discovery points: the onboarding screen, the upgrade/premium button callout on each feature, warmup scale\'s limited free selection, and practice score\'s blocked history. I wanted the flow to feel natural rather than pushy, so I laid out the discovery and payment steps to ensure users understood the value before being asked to pay. Ultimately I chose not to mention premium in the onboarding screen (because it felt too pushy) and instead I made sure onboarding mentioned the Warmup and Practice features that benefited the most from an upgrade to premium.',
       },
     ],
     deliverableImages: [
@@ -359,10 +359,9 @@ export const caseStudies: CaseStudy[] = [
       metrics: [
         { label: 'In-App Revenue', value: '+300%', context: 'After monetization redesign' },
         { label: 'First-Time Downloads', value: '+9.7%', context: 'Increase in downloads after introducing premium.' },
-        { label: 'MAU Growth', value: '40K → 50K', context: 'Grew after premium launch' },
         { label: 'Avg. Time in App', value: '+12.5%', context: 'Premium features increased engagement' },
       ],
-      reflection: 'This project taught me that monetization is about providing value and making the financial offer to users. Asking for payments (especially subscriptions) is intimidating for me, but I found my way forward by asking myself "how do I provide more than enough value to my users?" This shift allowed me to focus on the best Premium experience possible and turning the paywall into an opportunity to have more users experience it.',
+      reflection: 'This project taught me that monetization is about providing value and making the financial offer to users. Asking for payments (especially subscriptions) was intimidating for me, but I found my way forward by asking myself "how do I provide more than enough value to my users?" This shift allowed me to focus on the best Premium experience possible and turning the paywall into an opportunity to have more users experience it.',
       learned: [
         'Always aim for a great user experience that helps them solve their core problem(s).',
         'People will pay for products and features that provide value to them.',
@@ -458,10 +457,8 @@ export const caseStudies: CaseStudy[] = [
     },
     impact: {
       metrics: [
-        { label: 'Starting Point', value: 'Zero', context: 'No existing system or patterns' },
         { label: 'Accessibility', value: 'WCAG AA', context: 'Built in from day one' },
         { label: 'Role', value: 'First', context: 'Every decision was original' },
-        { label: 'Collaboration', value: 'Cross-fn', context: 'Design + engineering' },
       ],
       reflection: 'Building a design system from scratch taught me that the hardest part isn\'t the components. It\'s the decisions behind them. Every token, every spacing value, every color pairing is a decision that will be inherited by everyone who uses the system. That responsibility shapes how you think about design.',
       learned: [

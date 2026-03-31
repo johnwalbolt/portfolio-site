@@ -169,9 +169,9 @@ export default function CaseStudyPage() {
       {study.slug !== 'pocketpitch-metronome' && study.slug !== 'soundbath' && (
       <section className="pb-section-sm">
         <div className="container-main">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="flex flex-wrap justify-center gap-4">
             {study.impact.metrics.map((metric, i) => (
-              <SectionReveal key={metric.label} delay={i * 0.1}>
+              <SectionReveal key={metric.label} delay={i * 0.1} className="w-[calc(50%-0.5rem)] md:w-[calc(25%-0.75rem)]">
                 <div className="metric-card">
                   <p
                     className="text-display-sm font-bold mb-1"
@@ -783,9 +783,11 @@ export default function CaseStudyPage() {
               <h2 className="text-heading md:text-display-sm font-semibold text-primary mb-6">
                 Adjusting and shipping the polished feature!
               </h2>
-              <p className="text-body-lg text-secondary mb-12 max-w-2xl">
-                Testing had revealed that the haptic feedback for the metronome's vibration could not be used while the tuner was active. In order to keep the metronome's vibration for the rest of the experience and avoid confusing users, I made an explanative pop-up message for when users tried to use the vibration and tuner at the same time. Additionally, I rearranged the settings buttons so that the tempo and play/stop (likely the 2 most used buttons) were both on the right side together to allow for easier one-handed use (maybe the user needs to hold sheet music or a microphone in their other hand).
-              </p>
+              {study.slug === 'pocketpitch-metronome' && (
+                <p className="text-body-lg text-secondary mb-12 max-w-2xl">
+                  Testing had revealed that the haptic feedback for the metronome's vibration could not be used while the tuner was active. In order to keep the metronome's vibration for the rest of the experience and avoid confusing users, I made an explanative pop-up message for when users tried to use the vibration and tuner at the same time. Additionally, I rearranged the settings buttons so that the tempo and play/stop (likely the 2 most used buttons) were both on the right side together to allow for easier one-handed use (maybe the user needs to hold sheet music or a microphone in their other hand).
+                </p>
+              )}
             </SectionReveal>
 
             <div className="space-y-8">
