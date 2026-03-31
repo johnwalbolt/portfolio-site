@@ -781,7 +781,7 @@ export default function CaseStudyPage() {
             <SectionReveal>
               <p className="section-label mb-3">Final Designs</p>
               <h2 className="text-heading md:text-display-sm font-semibold text-primary mb-6">
-                Adjusting and shipping the polished feature!
+                {study.slug === 'pocketpitch-monetization' ? 'All the new screens and elements in their flows' : 'Adjusting and shipping the polished feature!'}
               </h2>
               {study.slug === 'pocketpitch-metronome' && (
                 <p className="text-body-lg text-secondary mb-12 max-w-2xl">
