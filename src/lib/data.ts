@@ -139,14 +139,14 @@ export const caseStudies: CaseStudy[] = [
         image: '/images/pocket-pitch-metronome-fullscreen-approach.png',
         wideImage: true,
         caption: 'Proposed global metronome placement across Pitch Pipe, Piano, and Tuner screens (with and without ad banner for free users).',
-        title: 'Designing a global solution',
+        title: 'Designing a global solution.',
         description: 'Because I work directly with the code for Pocket Pitch, I know how the files and code are structured. I knew that the tab bar\'s functionality and place in the code fit what I needed for the Metronome. Because of that, I had the Metronome follow suit. I also wanted to place the new global Metronome at the bottom of the screens because I had established a UX design pattern of placing local feature settings and messaging (like the Pitch Pipe) at the top.',
       },
       {
         image: '/images/pocket-pitch-metronome-drawer-style.png',
         wideImage: true,
         caption: 'Static variations and the eventual drawer style.',
-        title: 'A drawer keeps it simple',
+        title: 'A drawer keeps it simple.',
         description: 'As soon as I started testing UI designs for the metronome, it felt like I was introducing too many new buttons onto the screen. Also, it was taking up a good amount of real estate regardless if the user was actually using the metronome. I wanted to try having the minimum amount of space used with the minimum number of interactions, so I went with a 44px tall rectangle (almost like an extension of the tab bar) and 1 interaction to open the metronome settings. For the behavior of the interaction I decided to have a drawer that would slide out when the user tapped or swiped up on the Metronome. Tap and swipe were already established interactions for the app. For the buttons of the metronome, I used the already established style used for the pitch pipe\'s settings buttons.',
       },
     ],
@@ -161,7 +161,7 @@ export const caseStudies: CaseStudy[] = [
       },
     ],
     result: {
-      metric: 'Metronome for singers',
+      metric: 'Metronome for singers.',
       description: 'Designed, built, and shipped a metronome for singers who were already using multiple features within an app.',
     },
     challenge: {
@@ -400,7 +400,7 @@ export const caseStudies: CaseStudy[] = [
       },
     ],
     result: {
-      metric: 'Design system built from scratch',
+      metric: 'Design system built from scratch.',
       description: 'Designed the product UI and built an accessible design system as the first designer at inLoop. Every token, component, and pattern was an original decision with accessibility built in from day one.',
     },
     challenge: {
@@ -488,7 +488,7 @@ export const caseStudies: CaseStudy[] = [
     heroImage: '/images/soundbath-hero5.png',
     thumbnail: '/images/soundbath-thumb5.png',
     result: {
-      metric: 'Increased user engagement',
+      metric: 'Increased user engagement.',
       description: 'Sound Bath saw an increase in contact from users after the website launched.',
     },
     challenge: {
@@ -502,12 +502,12 @@ export const caseStudies: CaseStudy[] = [
     },
     insights: [
       {
-        title: 'Two audiences, one experience',
+        title: 'Two audiences, one experience.',
         description: 'The site needed to serve both individual listeners and business clients without feeling split.',
         detail: 'I designed the information architecture so both audiences could navigate naturally to what they needed without the site feeling like two separate products.',
       },
       {
-        title: 'Modern museum feel',
+        title: 'Modern museum feel.',
         description: 'After discussions with stakeholders, the agreed-upon vision was to feel like a modern museum.',
         detail: 'The visual direction leaned into clean layouts, generous whitespace, and letting the music and imagery breathe. The existing logo and visual assets informed the aesthetic without constraining it.',
       },
@@ -515,17 +515,17 @@ export const caseStudies: CaseStudy[] = [
     process: [
       {
         phase: 'Discovery',
-        title: 'Understanding the brand and audience',
+        title: 'Understanding the brand and audience.',
         description: 'Worked directly with stakeholders to understand their catalog, their two audience segments, and their vision for a modern museum aesthetic.',
       },
       {
         phase: 'Design',
-        title: 'Visual direction and layout',
+        title: 'Visual direction and layout.',
         description: 'Designed the site around Sound Bath\'s existing visual assets and logo, creating a clean, immersive experience that showcases the catalog.',
       },
       {
         phase: 'Build',
-        title: 'Design and development',
+        title: 'Design and development.',
         description: 'Built the website end-to-end, handling both design and development to ship a cohesive final product.',
       },
     ],

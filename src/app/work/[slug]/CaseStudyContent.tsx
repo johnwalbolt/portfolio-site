@@ -153,8 +153,7 @@ export default function CaseStudyPage() {
             <div className="text-center">
               <p className="section-label mb-4">The Result</p>
               <h2
-                className="text-display-sm md:text-display font-semibold mb-4"
-                style={{ color: study.heroColor }}
+                className="text-display-sm md:text-display font-semibold mb-4 text-primary"
               >
                 {study.result.metric}
               </h2>
@@ -174,8 +173,7 @@ export default function CaseStudyPage() {
               <SectionReveal key={metric.label} delay={i * 0.1} className="w-[calc(50%-0.5rem)] md:w-[calc(25%-0.75rem)]">
                 <div className="metric-card">
                   <p
-                    className="text-display-sm font-bold mb-1"
-                    style={{ color: study.heroColor }}
+                    className="text-display-sm font-bold mb-1 text-accent"
                   >
                     {metric.value}
                   </p>
@@ -197,7 +195,7 @@ export default function CaseStudyPage() {
               <div className="max-w-2xl mb-10">
                 <p className="section-label mb-3">The Starting Point</p>
                 <h2 className="text-heading md:text-display-sm font-semibold text-primary mb-4">
-                  Users kept asking for the same thing
+                  Users kept asking for the same thing.
                 </h2>
               </div>
             </SectionReveal>
@@ -235,7 +233,7 @@ export default function CaseStudyPage() {
             <div className="max-w-2xl mb-10">
               <p className="section-label mb-3">{study.slug === 'pocketpitch-metronome' ? 'The Scope' : study.slug === 'inloop-design-system' ? 'The Product' : 'The Problem'}</p>
               <h2 className="text-heading md:text-display-sm font-semibold text-primary mb-6">
-                {study.slug === 'pocketpitch-metronome' ? 'Understanding the feature requirements.' : study.slug === 'pocketpitch-premium' ? 'Preparing for launch.' : study.slug === 'inloop-design-system' ? 'A CRM for non-profit fundraising.' : 'Understanding the problem'}
+                {study.slug === 'pocketpitch-metronome' ? 'Understanding the feature requirements.' : study.slug === 'pocketpitch-premium' ? 'Preparing for launch.' : study.slug === 'inloop-design-system' ? 'A CRM for non-profit fundraising.' : 'Understanding the problem.'}
               </h2>
               <p className="text-body-lg text-secondary">
                 {study.challenge.summary}
@@ -346,7 +344,7 @@ export default function CaseStudyPage() {
               <div className="max-w-2xl mb-12">
                 <p className="section-label mb-3">What Premium Unlocks</p>
                 <h2 className="text-heading md:text-display-sm font-semibold text-primary mb-4">
-                  Increasing value for power users
+                  Increasing value for power users.
                 </h2>
                 <p className="text-body-lg text-secondary">
                   The new features attached to the launch of premium are vocal warmups and practice music tests. Both are offered free as limited versions with ads. With a premium subscription, users can unlock a long list of vocal scales for their warmups (like different exercises and machines at a gym), track their score history from practice music tests, and remove ads from all the core features of the app. Premium helps users be strong and better prepared for practice, rehearsals, and performances.
@@ -501,7 +499,7 @@ export default function CaseStudyPage() {
                 <div className="max-w-2xl mb-12">
                   <p className="section-label mb-3">User Flows</p>
                   <h2 className="text-heading md:text-display-sm font-semibold text-primary mb-4">
-                    Mapping the paths to premium
+                    Mapping the paths to premium.
                   </h2>
                   <p className="text-body-lg text-secondary">
                     {study.decisionCards[0].description}
@@ -511,7 +509,7 @@ export default function CaseStudyPage() {
                 <>
                   <p className="section-label mb-3">Key Decisions</p>
                   <h2 className="text-heading md:text-display-sm font-semibold text-primary mb-12">
-                    {study.slug === 'pocketpitch-metronome' ? 'From concept to interaction pattern' : 'Design choices that shaped the product'}
+                    {study.slug === 'pocketpitch-metronome' ? 'From concept to interaction pattern.' : 'Design choices that shaped the product'}
                   </h2>
                 </>
               )}
@@ -601,7 +599,7 @@ export default function CaseStudyPage() {
               <div className="max-w-2xl mb-12">
                 <p className="section-label mb-3">UI Design</p>
                 <h2 className="text-heading md:text-display-sm font-semibold text-primary mb-4">
-                  Designing the product screens for launch
+                  Designing the product screens for launch.
                 </h2>
                 <p className="text-body-lg text-secondary">
                   {study.insights[0].detail}
@@ -640,7 +638,7 @@ export default function CaseStudyPage() {
               <div className="max-w-2xl mb-12">
                 <p className="section-label mb-3">Design System</p>
                 <h2 className="text-heading md:text-display-sm font-semibold text-primary mb-4">
-                  Extracting patterns into a scalable system
+                  Extracting patterns into a scalable system.
                 </h2>
                 <p className="text-body-lg text-secondary">
                   {study.insights[1].detail}
@@ -664,7 +662,7 @@ export default function CaseStudyPage() {
               <div className="max-w-2xl mb-12">
                 <p className="section-label mb-3">UI Design</p>
                 <h2 className="text-heading md:text-display-sm font-semibold text-primary mb-4">
-                  New elements with established styles
+                  New elements with established styles.
                 </h2>
                 <p className="text-body-lg text-secondary">
                   The new screens for the premium subscription started with a generic paywall layout that would be familiar to users based on what was common in mobile app experiences. From there I used established colors, fonts, and spacing styles to complete the UI design. Then I made the onboarding, premium active, and legacy active screens to match the look and feel of the paywall. Finally I made a &quot;Upgrade&quot; and &quot;Premium&quot; button based on the app's small button style, but adding a star emoji to grab attention (and hopefully more sales).
@@ -690,7 +688,7 @@ export default function CaseStudyPage() {
             <SectionReveal>
               <p className="section-label mb-3">Key Insights</p>
               <h2 className="text-heading md:text-display-sm font-semibold text-primary mb-12">
-                What research revealed
+                What research revealed.
               </h2>
             </SectionReveal>
 
@@ -744,7 +742,7 @@ export default function CaseStudyPage() {
               <div className="max-w-2xl mb-10">
                 <p className="section-label mb-3">Rapid <span className="line-through">Prototyping</span> Testing</p>
                 <h2 className="text-heading md:text-display-sm font-semibold text-primary mb-6">
-                  From ideas to my phone in hours
+                  From ideas to my phone in hours.
                 </h2>
                 <p className="text-body-lg text-secondary">
                   Once the concept was solidified, I used Claude and Xcode to rapidly build a working version I could test on my phone.
@@ -781,7 +779,7 @@ export default function CaseStudyPage() {
             <SectionReveal>
               <p className="section-label mb-3">Final Designs</p>
               <h2 className="text-heading md:text-display-sm font-semibold text-primary mb-6">
-                {study.slug === 'pocketpitch-monetization' ? 'All the new screens and elements in their flows' : 'Adjusting and shipping the polished feature!'}
+                {study.slug === 'pocketpitch-monetization' ? 'All the new screens and elements in their flows.' : 'Adjusting and shipping the polished feature!'}
               </h2>
               {study.slug === 'pocketpitch-metronome' && (
                 <p className="text-body-lg text-secondary mb-12 max-w-2xl">
@@ -839,7 +837,7 @@ export default function CaseStudyPage() {
               <SectionReveal>
                 <p className="section-label mb-3">The Process</p>
                 <h2 className="text-heading md:text-display-sm font-semibold text-primary mb-12">
-                  How we got there
+                  How we got there.
                 </h2>
               </SectionReveal>
 
@@ -910,7 +908,7 @@ export default function CaseStudyPage() {
               <SectionReveal>
                 <p className="section-label mb-3">The Solution</p>
                 <h2 className="text-heading md:text-display-sm font-semibold text-primary mb-4">
-                  What we built
+                  What we built.
                 </h2>
                 <p className="text-body-lg text-secondary mb-8">
                   {study.solution.summary}
@@ -977,7 +975,7 @@ export default function CaseStudyPage() {
           <SectionReveal>
             <p className="section-label mb-3">Reflection</p>
             <h2 className="text-heading md:text-display-sm font-semibold text-primary mb-6">
-              What I learned
+              What I learned.
             </h2>
             <p className="text-body-lg text-secondary mb-8">
               {study.impact.reflection}

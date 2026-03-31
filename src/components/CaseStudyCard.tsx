@@ -67,7 +67,7 @@ export default function CaseStudyCard({ study, index }: CaseStudyCardProps) {
         {/* Content */}
         <div className="p-6 md:p-8">
           <div className="flex flex-wrap items-center gap-2 mb-3">
-            <span className="text-caption font-medium" style={{ color: study.company === 'Pocket Pitch' ? '#C400F0' : study.heroColor }}>
+            <span className="text-caption font-medium text-accent">
               {study.company}
             </span>
             <span className="text-neutral-300">/</span>
