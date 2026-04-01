@@ -688,15 +688,15 @@ export default function CaseStudyPage() {
             <SectionReveal>
               <p className="section-label mb-3">Key Insights</p>
               <h2 className="text-heading md:text-display-sm font-semibold text-primary mb-12">
-                What research revealed.
+                {study.slug === 'soundbath' ? 'What discussions with stakeholders revealed.' : 'What research revealed.'}
               </h2>
             </SectionReveal>
 
-            <div className="space-y-8">
-              {study.insights.map((insight, i) => (
-                <SectionReveal key={i} delay={i * 0.1}>
-                  <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-12 items-start">
-                    <div className="lg:col-span-2">
+            {study.slug === 'soundbath' ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {study.insights.map((insight, i) => (
+                  <SectionReveal key={i} delay={i * 0.1}>
+                    <div>
                       <span
                         className="text-caption font-mono mb-3 block"
                         style={{ color: study.heroColor }}
@@ -710,16 +710,39 @@ export default function CaseStudyPage() {
                         {insight.description}
                       </p>
                     </div>
-                    <div className="lg:col-span-3">
-                      <div className="bg-muted rounded-xl p-6">
-                        <p className="text-caption font-medium text-secondary mb-2">Supporting evidence</p>
-                        <p className="text-body text-primary">{insight.detail}</p>
+                  </SectionReveal>
+                ))}
+              </div>
+            ) : (
+              <div className="space-y-8">
+                {study.insights.map((insight, i) => (
+                  <SectionReveal key={i} delay={i * 0.1}>
+                    <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-12 items-start">
+                      <div className="lg:col-span-2">
+                        <span
+                          className="text-caption font-mono mb-3 block"
+                          style={{ color: study.heroColor }}
+                        >
+                          Insight {String(i + 1).padStart(2, '0')}
+                        </span>
+                        <h3 className="text-lg font-semibold text-primary mb-2">
+                          {insight.title}
+                        </h3>
+                        <p className="text-body text-secondary">
+                          {insight.description}
+                        </p>
+                      </div>
+                      <div className="lg:col-span-3">
+                        <div className="bg-muted rounded-xl p-6">
+                          <p className="text-caption font-medium text-secondary mb-2">Supporting evidence</p>
+                          <p className="text-body text-primary">{insight.detail}</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </SectionReveal>
-              ))}
-            </div>
+                  </SectionReveal>
+                ))}
+              </div>
+            )}
 
             {study.slug === 'soundbath' && (
               <SectionReveal delay={0.2}>
@@ -836,32 +859,23 @@ export default function CaseStudyPage() {
             <div className="container-main">
               <SectionReveal>
                 <p className="section-label mb-3">The Process</p>
-                <h2 className="text-heading md:text-display-sm font-semibold text-primary mb-12">
-                  How we got there.
+                <h2 className="text-heading md:text-display-sm font-semibold text-primary mb-6">
+                  {study.slug === 'soundbath' ? 'Building upon existing branding.' : 'How we got there.'}
                 </h2>
+                {study.slug === 'soundbath' && (
+                  <p className="text-body-lg text-secondary mb-12 max-w-2xl">Sound Bath already had a great logo, some colors, and preferred fonts. I added some more colors and font styles (based on their existing ones) to cover everything I would need for the UI Designs.</p>
+                )}
               </SectionReveal>
 
               {study.slug === 'soundbath' ? (
               <div className="space-y-16">
-                {study.process.map((step, i) => {
-                  const images = ['/images/soundbath-logosnew.png', '/images/soundbath-colorsnew.png', '/images/soundbath-fonthierarchynew.png'];
-                  return (
+                {['/images/soundbath-logosnew.png', '/images/soundbath-colorsnew.png', '/images/soundbath-fonthierarchynew.png'].map((src, i) => (
                   <SectionReveal key={i} delay={i * 0.1}>
-                    <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center ${i % 2 === 1 ? '' : ''}`}>
-                      <div className={i % 2 === 1 ? 'lg:order-2' : ''}>
-                        <div className="rounded-2xl overflow-hidden bg-neutral-100">
-                          <img src={images[i]} alt={step.title} className="w-full h-auto" />
-                        </div>
-                      </div>
-                      <div className={i % 2 === 1 ? 'lg:order-1' : ''}>
-                        <span className="text-caption font-medium text-secondary uppercase tracking-wider">{step.phase}</span>
-                        <h3 className="text-lg font-semibold text-primary mt-2 mb-3">{step.title}</h3>
-                        <p className="text-body text-secondary">{step.description}</p>
-                      </div>
+                    <div className="rounded-2xl overflow-hidden bg-neutral-100">
+                      <img src={src} alt={`Sound Bath design asset ${i + 1}`} className="w-full h-auto" />
                     </div>
                   </SectionReveal>
-                  );
-                })}
+                ))}
               </div>
               ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -908,13 +922,14 @@ export default function CaseStudyPage() {
               <SectionReveal>
                 <p className="section-label mb-3">The Solution</p>
                 <h2 className="text-heading md:text-display-sm font-semibold text-primary mb-4">
-                  What we built.
+                  What I built.
                 </h2>
                 <p className="text-body-lg text-secondary mb-8">
                   {study.solution.summary}
                 </p>
               </SectionReveal>
 
+              {study.slug !== 'soundbath' && (
               <SectionReveal delay={0.1}>
                 <div className="bg-muted rounded-xl p-6 md:p-8">
                   <p className="text-sm font-semibold text-primary mb-4">Key design decisions:</p>
@@ -931,6 +946,7 @@ export default function CaseStudyPage() {
                   </ul>
                 </div>
               </SectionReveal>
+              )}
             </div>
           </section>
 

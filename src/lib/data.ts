@@ -244,7 +244,7 @@ export const caseStudies: CaseStudy[] = [
     slug: 'pocketpitch-monetization',
     title: 'Introducing Premium and Redesigning Monetization.',
     subtitle: 'Pocket Pitch had a consistent 50K+ monthly active users, but a weak revenue model. I paired the introduction of new premium features with a redesigned monetization strategy. Beyond the price change, this monetization strategy focused on how and when to approach users about upgrading to a premium subscription.',
-    hook: '+300% revenue, +12.5% time in app',
+    hook: '+300% revenue',
     role: 'Solo Designer & Developer',
     team: 'Solo (design, development, strategy)',
     timeline: 'Q1 2026',
@@ -460,12 +460,8 @@ export const caseStudies: CaseStudy[] = [
         { label: 'Accessibility', value: 'WCAG AA', context: 'Built in from day one' },
         { label: 'Role', value: 'First', context: 'Every decision was original' },
       ],
-      reflection: 'Building a design system from scratch taught me that the hardest part isn\'t the components. It\'s the decisions behind them. Every token, every spacing value, every color pairing is a decision that will be inherited by everyone who uses the system. That responsibility shapes how you think about design.',
-      learned: [
-        'Designing the product first and extracting the system from real decisions produces a more useful design system than building one in the abstract.',
-        'Design systems are communication tools between design and engineering. The documentation matters as much as the components.',
-        'First designer judgment means every decision sets a precedent. Document the "why," not just the "what."',
-      ],
+      reflection: 'There is a lot of thought that goes into "simple" designs like grey tables with black text and white fill. This project forced me to focus on key principles of readability and accessibility.',
+      learned: [],
     },
     nextStudy: {
       slug: 'soundbath',
@@ -508,7 +504,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: 'Modern museum feel.',
-        description: 'After discussions with stakeholders, the agreed-upon vision was to feel like a modern museum.',
+        description: 'The agreed-upon vision was to have the visual boldness of a museum\'s architecture upon arrival, but then prioritizing the focus to be on the content once users navigate in deeper.',
         detail: 'The visual direction leaned into clean layouts, generous whitespace, and letting the music and imagery breathe. The existing logo and visual assets informed the aesthetic without constraining it.',
       },
     ],
