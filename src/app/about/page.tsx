@@ -60,25 +60,25 @@ export default function About() {
             >
               <div>
                 <div className="aspect-[3/2] rounded-2xl overflow-hidden bg-neutral-100">
-                  <img src="/images/about-producing.jpg" alt="John producing a short film in New York" className="w-full h-full object-cover" />
+                  <img src="/images/about-producing.jpg" alt="Producing a concert in New York at the Duplex" className="w-full h-full object-cover" />
                 </div>
                 <p className="text-caption text-secondary mt-2">↑ Producing a concert in New York at the Duplex.</p>
               </div>
               <div>
                 <div className="aspect-[3/2] rounded-2xl overflow-hidden bg-neutral-100">
-                  <img src="/images/about-directing.jpg" alt="John directing actors in a rehearsal" className="w-full h-full object-cover" />
+                  <img src="/images/about-directing.jpg" alt="Directing a short film I wrote titled Non-Eq" className="w-full h-full object-cover" />
                 </div>
                 <p className="text-caption text-secondary mt-2">↑ Directing a short film I wrote titled Non-Eq.</p>
               </div>
               <div>
                 <div className="aspect-[3/2] rounded-2xl overflow-hidden bg-neutral-100">
-                  <img src="/images/about-ai-talk.png" alt="John speaking about AI tools on a podcast" className="w-full h-full object-cover" />
+                  <img src="/images/about-ai-talk.png" alt="Speaking at an event for AI User Group in San Francisco" className="w-full h-full object-cover" />
                 </div>
                 <p className="text-caption text-secondary mt-2">↑ Speaking at an event for AI User Group in San Francisco.</p>
               </div>
               <div>
                 <div className="aspect-[3/2] rounded-2xl overflow-hidden bg-neutral-100">
-                  <img src="/images/about-race-org.jpg" alt="John organizing the SF Perimeter Relay with friends" className="w-full h-full object-cover" />
+                  <img src="/images/about-race-org.jpg" alt="Organizing runners at the start of a relay race around San Francisco" className="w-full h-full object-cover" />
                 </div>
                 <p className="text-caption text-secondary mt-2">↑ Organizing runners at the start of a relay race around San Francisco.</p>
               </div>

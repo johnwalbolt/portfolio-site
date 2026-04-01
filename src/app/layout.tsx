@@ -12,6 +12,10 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: 'John Walbolt — Product Designer',
   description: 'Product designer with a background as a creator and producer. Designs digital products people love to use, with AI tools to rapidly craft, prototype, and ship.',
+  icons: {
+    icon: '/favicon.png',
+    apple: '/favicon.png',
+  },
   openGraph: {
     title: 'John Walbolt — Product Designer',
     description: 'Product designer with a background as a creator and producer. Uses AI tools to rapidly craft, prototype, and ship.',
