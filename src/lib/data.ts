@@ -472,7 +472,7 @@ export const caseStudies: CaseStudy[] = [
     slug: 'soundbath',
     title: 'Designing a Modern Music Catalog.',
     subtitle: 'A category-leading music producer wanted to educate customers on their full ambient music and sound catalog and connect more with their audience.',
-    hook: 'Sole designer and developer',
+    hook: 'Client project, designed and built solo',
     role: 'Designer & Builder',
     team: 'Solo (working directly with stakeholders)',
     timeline: '2025',
