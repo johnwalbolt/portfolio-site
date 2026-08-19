@@ -42,8 +42,11 @@ export default function Home() {
           A digital designer and builder with a storyteller background.
         </p>
 
+        {/* id="work" is the target of the nav link; scroll-mt clears the
+            fixed nav so the row is not tucked underneath it */}
         <ul
-          className="mt-8 grid grid-cols-2 gap-x-3 gap-y-10 md:mt-10 md:grid-cols-3 md:gap-x-5"
+          id="work"
+          className="mt-8 scroll-mt-24 grid grid-cols-2 gap-x-3 gap-y-10 md:mt-10 md:grid-cols-3 md:gap-x-5"
           style={{ width: `${THUMBS_WIDTH}cqw` }}
         >
           {sites.map((site) => (

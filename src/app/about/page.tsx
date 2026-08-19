@@ -55,7 +55,7 @@ export default function About() {
                   >
                     Pocket Pitch
                   </Link>
-                  . Designing and founding mobile apps showed me my love and talent for product design, and today my &ldquo;passion projects&rdquo; have been downloaded nearly 1 million times. (expected to cross 1 million downloads on Sept 1st, 2026)
+                  . Designing and founding mobile apps showed me my love and talent for product design, and today my &ldquo;passion projects&rdquo; have been downloaded nearly 1 million times.
                 </p>
                 {/* Pulled from the paragraph above — aria-hidden so screen
                     readers do not hear the same sentence twice. */}

@@ -74,7 +74,7 @@ export const projects: Project[] = [
       { label: 'Client', value: 'Ovata' },
     ],
     summary: [
-      'Ovata is a boutique landscape architect studio that wanted to update their website as they prepare to approach new clients. After discussions with the client, we arrived at a modern styling using earthy colors and the existing company logo and font. I built the website using Claude Code, deployed it to their Bluehost hosting account, setup and connected Web3Forms for the contact form\u2019s functionality, and finally setup and connected Sanity for the blog\u2019s functionality.',
+      'Ovata is a boutique landscape architecture studio that wanted to update their website as they prepared to approach new clients. After discussions with the client, we arrived at a modern styling using earthy colors and the existing company logo and font. I built the website using Claude Code, deployed it to their Bluehost hosting account, set up and connected Web3Forms for the contact form\u2019s functionality, and finally set up and connected Sanity for the blog\u2019s functionality.',
     ],
     images: [
       '/images/OvataProjects.png',
@@ -114,11 +114,11 @@ export const projects: Project[] = [
       {
         label: 'Team',
         value:
-          'Solo (Currently build with AI, previously hired developer contractors)',
+          'Solo (currently built with AI, previously hired developer contractors)',
       },
     ],
     summary: [
-      'This started as a passion project in 2015 as a simple tool for singers, and since then it has grown to 50k Monthly Active Users with a 4.6-star rating. Core users are singers of all skills (including a large percentage of choral singers) and of all technical abilities. The user experience design includes audio and visual interactions with haptic feedback and use of devices\u2019 microphone.',
+      'This started in 2015 as a passion project \u2014 a simple tool for singers, and since then it has grown to 50k Monthly Active Users with a 4.6-star rating. Core users are singers of all skill levels (including a large percentage of choral singers) and of all technical abilities. The user experience design includes audio and visual interactions with haptic feedback and use of the device\u2019s microphone.',
     ],
     images: [
       '/images/PocketPitchOnboarding.png',

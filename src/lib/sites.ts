@@ -25,7 +25,7 @@ export const sites: Site[] = [
     url: 'ovataworks.com',
     href: '/projects/ovata',
     description:
-      'A studio site for an interior greenery practice, designed and built to turn project browsing into new enquiries.',
+      'A site for a boutique landscape architecture studio, designed and built to turn project browsing into new enquiries.',
     thumbnail: '/images/OvataThumb.png',
     category: 'Website',
   },

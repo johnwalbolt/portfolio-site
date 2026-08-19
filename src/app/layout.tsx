@@ -25,15 +25,15 @@ const playfairDisplay = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-  title: 'John Walbolt — Product Designer',
-  description: 'Product designer with a background as a creator and producer. Designs digital products people love to use, with AI tools to rapidly craft, prototype, and ship.',
+  title: 'John Walbolt — Digital Designer',
+  description: 'Digital designer and builder with a storyteller background. Designs and ships websites, apps, and design systems, using AI tools to rapidly craft, prototype, and ship.',
   icons: {
     icon: '/favicon.png',
     apple: '/favicon.png',
   },
   openGraph: {
-    title: 'John Walbolt — Product Designer',
-    description: 'Product designer with a background as a creator and producer. Uses AI tools to rapidly craft, prototype, and ship.',
+    title: 'John Walbolt — Digital Designer',
+    description: 'Digital designer and builder with a storyteller background. Uses AI tools to rapidly craft, prototype, and ship.',
     type: 'website',
   },
 }
