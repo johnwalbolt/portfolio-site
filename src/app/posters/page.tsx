@@ -93,7 +93,7 @@ export default function Posters() {
       }
       leadWithSummary
       summary={[
-        'Various show posters I designed between 2018 and 2020, many of which I was also involved in as a producer.',
+        'Various show posters I designed between 2018 and 2021, many of which I was also involved in as a producer.',
       ]}
       images={[]}
     />
