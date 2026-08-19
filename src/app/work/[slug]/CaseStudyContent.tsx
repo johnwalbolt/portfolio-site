@@ -9,7 +9,7 @@ import SectionReveal from '@/components/SectionReveal'
 
 function ImagePlaceholder({ label, aspect = 'aspect-[2/1]' }: { label: string; aspect?: string }) {
   return (
-    <div className={`rounded-2xl ${aspect} bg-neutral-100 border-2 border-dashed border-neutral-300 flex items-center justify-center`}>
+    <div className={`${aspect} bg-neutral-100 border-2 border-dashed border-neutral-300 flex items-center justify-center`}>
       <div className="text-center px-4">
         <svg width="48" height="48" viewBox="0 0 24 24" fill="none" className="mx-auto mb-3 text-neutral-300">
           <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="1.5" />
@@ -25,7 +25,7 @@ function ImagePlaceholder({ label, aspect = 'aspect-[2/1]' }: { label: string; a
 function CaseStudyImage({ src, alt, aspect = 'aspect-[2/1]', placeholder }: { src?: string; alt: string; aspect?: string; placeholder: string }) {
   if (src) {
     return (
-      <div className={`rounded-2xl overflow-hidden bg-neutral-100`}>
+      <div className={`overflow-hidden bg-neutral-100`}>
         <img src={src} alt={alt} className="w-full h-auto" />
       </div>
     )
@@ -128,7 +128,7 @@ export default function CaseStudyPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="rounded-2xl overflow-hidden"
+            className="overflow-hidden"
             style={{ backgroundColor: study.heroColorLight }}
           >
             {study.heroImage ? (
@@ -327,7 +327,7 @@ export default function CaseStudyPage() {
           {study.slug === 'soundbath' && (
             <SectionReveal delay={0.1}>
               <div className="mt-8">
-                <div className="rounded-2xl overflow-hidden bg-neutral-100">
+                <div className="overflow-hidden bg-neutral-100">
                   <img src="/images/soundbath-streaming4.png" alt="Sound Bath across streaming platforms: Spotify, Apple, Bandcamp, YouTube, Amazon" className="w-full h-auto" />
                 </div>
               </div>
@@ -355,7 +355,7 @@ export default function CaseStudyPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {study.premiumFeatures.map((feature, i) => (
                 <SectionReveal key={i} delay={i * 0.1}>
-                  <div className="bg-muted rounded-2xl overflow-hidden h-full">
+                  <div className="bg-muted overflow-hidden h-full">
                     <CaseStudyImage
                       src={feature.image}
                       alt={feature.title}
@@ -392,7 +392,7 @@ export default function CaseStudyPage() {
                     <div className="space-y-6">
                       <div>
                         <span
-                          className="text-caption font-mono mb-3 block"
+                          className="text-caption mb-3 block"
                           style={{ color: study.heroColor }}
                         >
                           {study.slug === 'pocketpitch-metronome' ? 'Brainstorm' : 'Showcase'} {String(i + 1).padStart(2, '0')}
@@ -424,7 +424,7 @@ export default function CaseStudyPage() {
                     <div className="space-y-6">
                       <div>
                         <span
-                          className="text-caption font-mono mb-3 block"
+                          className="text-caption mb-3 block"
                           style={{ color: study.heroColor }}
                         >
                           {study.slug === 'pocketpitch-metronome' ? 'Brainstorm' : 'Showcase'} {String(i + 1).padStart(2, '0')}
@@ -447,7 +447,7 @@ export default function CaseStudyPage() {
                     <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center ${i % 2 === 1 ? 'lg:direction-rtl' : ''}`}>
                       <div className={i % 2 === 1 ? 'lg:order-2' : ''}>
                         {showcase.video ? (
-                          <div className="rounded-2xl overflow-hidden bg-neutral-100">
+                          <div className="overflow-hidden bg-neutral-100">
                             <video
                               src={showcase.video}
                               poster={showcase.image}
@@ -469,7 +469,7 @@ export default function CaseStudyPage() {
                       </div>
                       <div className={i % 2 === 1 ? 'lg:order-1' : ''}>
                         <span
-                          className="text-caption font-mono mb-3 block"
+                          className="text-caption mb-3 block"
                           style={{ color: study.heroColor }}
                         >
                           {study.slug === 'pocketpitch-metronome' ? 'Brainstorm' : 'Showcase'} {String(i + 1).padStart(2, '0')}
@@ -535,7 +535,7 @@ export default function CaseStudyPage() {
                     <div className="space-y-6">
                       <div>
                         <span
-                          className="text-caption font-mono mb-3 block"
+                          className="text-caption mb-3 block"
                           style={{ color: study.heroColor }}
                         >
                           Decision {String(i + 1).padStart(2, '0')}
@@ -569,7 +569,7 @@ export default function CaseStudyPage() {
                       </div>
                       <div className={i % 2 === 1 ? 'lg:order-1' : ''}>
                         <span
-                          className="text-caption font-mono mb-3 block"
+                          className="text-caption mb-3 block"
                           style={{ color: study.heroColor }}
                         >
                           Decision {String(i + 1).padStart(2, '0')}
@@ -646,7 +646,7 @@ export default function CaseStudyPage() {
               </div>
             </SectionReveal>
             <SectionReveal delay={0.1}>
-              <div className="rounded-2xl overflow-hidden bg-neutral-100">
+              <div className="overflow-hidden bg-neutral-100">
                 <img src="/images/inloop-process.png" alt="inLoop design system: color tokens, typography, and component states" className="w-full h-auto" />
               </div>
             </SectionReveal>
@@ -698,7 +698,7 @@ export default function CaseStudyPage() {
                   <SectionReveal key={i} delay={i * 0.1}>
                     <div>
                       <span
-                        className="text-caption font-mono mb-3 block"
+                        className="text-caption mb-3 block"
                         style={{ color: study.heroColor }}
                       >
                         Insight {String(i + 1).padStart(2, '0')}
@@ -720,7 +720,7 @@ export default function CaseStudyPage() {
                     <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-12 items-start">
                       <div className="lg:col-span-2">
                         <span
-                          className="text-caption font-mono mb-3 block"
+                          className="text-caption mb-3 block"
                           style={{ color: study.heroColor }}
                         >
                           Insight {String(i + 1).padStart(2, '0')}
@@ -747,7 +747,7 @@ export default function CaseStudyPage() {
             {study.slug === 'soundbath' && (
               <SectionReveal delay={0.2}>
                 <div className="mt-12">
-                  <div className="rounded-2xl overflow-hidden bg-neutral-100">
+                  <div className="overflow-hidden bg-neutral-100">
                     <img src="/images/soundbath-museum.png" alt="Modern museum inspiration: Guggenheim exterior and interior, minimalist gallery spaces" className="w-full h-auto" />
                   </div>
                 </div>
@@ -780,7 +780,7 @@ export default function CaseStudyPage() {
                   aspect="aspect-[4/3]"
                   placeholder="Claude Code prototyping session"
                 />
-                <div className="rounded-2xl overflow-hidden bg-neutral-100">
+                <div className="overflow-hidden bg-neutral-100">
                   <video
                     src="/images/metronome-simulator-test.mov"
                     controls
@@ -871,7 +871,7 @@ export default function CaseStudyPage() {
               <div className="space-y-16">
                 {['/images/soundbath-logosnew.png', '/images/soundbath-colorsnew.png', '/images/soundbath-fonthierarchynew.png'].map((src, i) => (
                   <SectionReveal key={i} delay={i * 0.1}>
-                    <div className="rounded-2xl overflow-hidden bg-neutral-100">
+                    <div className="overflow-hidden bg-neutral-100">
                       <img src={src} alt={`Sound Bath design asset ${i + 1}`} className="w-full h-auto" />
                     </div>
                   </SectionReveal>
@@ -908,7 +908,7 @@ export default function CaseStudyPage() {
           <section className="py-section-sm">
             <div className="container-main">
               <SectionReveal>
-                <div className="rounded-2xl overflow-hidden bg-neutral-100">
+                <div className="overflow-hidden bg-neutral-100">
                   <img src="/images/inloop-process.png" alt="inLoop design system: color tokens, typography, and component states" className="w-full h-auto" />
                 </div>
               </SectionReveal>
@@ -956,25 +956,25 @@ export default function CaseStudyPage() {
               <SectionReveal>
                 {study.slug === 'soundbath' ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="rounded-2xl overflow-hidden bg-neutral-100">
+                  <div className="overflow-hidden bg-neutral-100">
                     <img src="/images/soundbath-final1.png" alt="Sound Bath website: homepage with hero and catalog section" className="w-full h-auto" />
                   </div>
-                  <div className="rounded-2xl overflow-hidden bg-neutral-100">
+                  <div className="overflow-hidden bg-neutral-100">
                     <img src="/images/soundbath-final2.png" alt="Sound Bath website: catalog page with category cards" className="w-full h-auto" />
                   </div>
-                  <div className="rounded-2xl overflow-hidden bg-neutral-100">
+                  <div className="overflow-hidden bg-neutral-100">
                     <img src="/images/soundbath-final3.png" alt="Sound Bath website: connect page with contact form" className="w-full h-auto" />
                   </div>
-                  <div className="rounded-2xl overflow-hidden bg-neutral-100">
+                  <div className="overflow-hidden bg-neutral-100">
                     <img src="/images/soundbath-final4.png" alt="Sound Bath website: meditation category page with playlist embed" className="w-full h-auto" />
                   </div>
                 </div>
                 ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="rounded-2xl overflow-hidden bg-neutral-100">
+                  <div className="overflow-hidden bg-neutral-100">
                     <img src="/images/inloop-final-1.png" alt="inLoop contacts list view with filtering" className="w-full h-auto" />
                   </div>
-                  <div className="rounded-2xl overflow-hidden bg-neutral-100">
+                  <div className="overflow-hidden bg-neutral-100">
                     <img src="/images/inloop-final-2.png" alt="inLoop contact detail profile view" className="w-full h-auto" />
                   </div>
                 </div>

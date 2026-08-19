@@ -294,7 +294,7 @@ export const caseStudies: CaseStudy[] = [
     figmaUrl: 'https://www.figma.com/design/SRGHKYXnhdGBPxbO4zd3ZO/Premium-Upsell?node-id=4001-8458&t=SN1nPmxBW4Ik1mMI-1',
     result: {
       metric: 'Revenue and usage increased!',
-      description: 'Monetization didn\'t hurt the experience — it improved it.',
+      description: 'Monetization didn\'t hurt the experience. It improved it.',
     },
     challenge: {
       summary: 'Pocket Pitch had been a "Swiss army knife for singers" with a Pitch Pipe, Piano, and Tuner, and the only in-app purchase offered to users was a one-time payment of $1.99 to remove ads from the app. New complex features of vocal warmups and practice music tests were being added with restrictions to justify launching a new subscription model starting at $0.99 per month and $8.99 per year. The previous monetization relied on users finding the In-App purchase on their own through the settings screen. This new premium launch needed a thorough plan for all the ways users could discover and purchase premium.',

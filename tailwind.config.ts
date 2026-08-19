@@ -17,8 +17,10 @@ const config: Config = {
         border: '#e5e5e5',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
-        display: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        sans: ['var(--font-inter)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        mono: ['ui-monospace', 'SFMono-Regular', 'monospace'],
+        display: ['var(--font-bebas)', 'Impact', 'sans-serif'],
+        serif: ['var(--font-playfair)', 'Georgia', 'serif'],
       },
       fontSize: {
         'display-lg': ['4.5rem', { lineHeight: '1.05', letterSpacing: '-0.03em' }],

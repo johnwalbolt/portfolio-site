@@ -1,104 +1,145 @@
-'use client'
-
-import { motion } from 'framer-motion'
+import Image from 'next/image'
 import Link from 'next/link'
-import { siteConfig, caseStudies } from '@/lib/data'
-import { fadeInUp, staggerContainer } from '@/lib/animations'
-import CaseStudyCard from '@/components/CaseStudyCard'
-import SectionReveal from '@/components/SectionReveal'
+import PageBackdrop from '@/components/PageBackdrop'
+import { sites } from '@/lib/sites'
+
+// Bebas Kai sets "JOHN WALBOLT" at 4.664em wide (measured from the live font).
+// Dividing the target width by that ratio sizes the title to span it exactly.
+const TITLE_EM_RATIO = 4.664
+
+// Share of the viewport width the title and the thumbnail row each span.
+const TITLE_WIDTH = 90
+const THUMBS_WIDTH = 90
+
+// Floor on the title's font size. The subheader is derived from the title
+// *after* this floor is applied, so the exact 1:3 ratio still holds — it only
+// stops the pair collapsing into illegibility on narrow screens.
+const MIN_TITLE_FONT_PX = 42
+
+const TITLE_FONT_SIZE = `max(${MIN_TITLE_FONT_PX}px, calc(${TITLE_WIDTH}cqw / ${TITLE_EM_RATIO}))`
+const SUBHEAD_FONT_SIZE = `calc(${TITLE_FONT_SIZE} / 3)`
 
 export default function Home() {
   return (
     <>
-      {/* Hero Section */}
-      <section className="pt-32 md:pt-44 pb-section">
-        <div className="container-main">
-          <motion.div
-            initial={staggerContainer.animate}
-            animate={staggerContainer.animate}
-            className="max-w-3xl"
-          >
-            <motion.p
-              initial={fadeInUp.initial}
-              animate={fadeInUp.animate}
-              transition={{ ...fadeInUp.transition, delay: 0.1 }}
-              className="section-label mb-4"
-            >
-              {siteConfig.role} &mdash; {siteConfig.location}
-            </motion.p>
+      <PageBackdrop />
 
-            <motion.h1
-              initial={fadeInUp.initial}
-              animate={fadeInUp.animate}
-              transition={{ ...fadeInUp.transition, delay: 0.2 }}
-              className="text-display-sm md:text-display lg:text-display-lg font-semibold text-primary mb-6"
-            >
-              Designing for real people,{' '}
-              <span className="text-accent">building for the real world.</span>
-            </motion.h1>
+      <section
+        className="relative flex min-h-screen w-full flex-col items-center justify-center pb-10 pt-24"
+        style={{ containerType: 'inline-size' }}
+      >
+        <h1
+          className="whitespace-nowrap text-center font-display leading-[0.8] text-[#F40014]"
+          style={{ fontSize: TITLE_FONT_SIZE }}
+        >
+          JOHN WALBOLT
+        </h1>
 
-            <motion.p
-              initial={fadeInUp.initial}
-              animate={fadeInUp.animate}
-              transition={{ ...fadeInUp.transition, delay: 0.3 }}
-              className="text-body-lg text-secondary max-w-xl mb-8"
-            >
-              My background as a creator and producer has led me to design digital products that people love to use. I use AI tools to rapidly craft, prototype, and ship.
-            </motion.p>
+        <p
+          className="mt-5 max-w-[24ch] text-center font-serif leading-[1.15] text-[#222222] md:mt-7"
+          style={{ fontSize: SUBHEAD_FONT_SIZE }}
+        >
+          A digital designer and builder with a storyteller background.
+        </p>
 
-            <motion.div
-              initial={fadeInUp.initial}
-              animate={fadeInUp.animate}
-              transition={{ ...fadeInUp.transition, delay: 0.4 }}
-              className="flex flex-col sm:flex-row items-start gap-4"
-            >
-              <a
-                href="#work"
-                className="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-full font-medium hover:bg-primary/80 transition-colors"
-              >
-                <span>View Case Studies</span>
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="mt-0.5">
-                  <path d="M8 3v10M4 9l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </a>
-              <Link
-                href="/about"
-                className="inline-flex items-center gap-2 border border-border text-primary px-6 py-3 rounded-full font-medium hover:bg-muted transition-colors"
-              >
-                About Me
-              </Link>
-            </motion.div>
-          </motion.div>
-
-        </div>
+        <ul
+          className="mt-8 grid grid-cols-2 gap-x-3 gap-y-10 md:mt-10 md:grid-cols-3 md:gap-x-5"
+          style={{ width: `${THUMBS_WIDTH}cqw` }}
+        >
+          {sites.map((site) => (
+            <SiteThumb key={site.url} site={site} />
+          ))}
+        </ul>
       </section>
-
-      {/* Case Studies Section */}
-      <section id="work" className="pb-section">
-        <div className="container-main">
-          <SectionReveal>
-            <div className="flex items-end justify-between mb-12">
-              <div>
-                <p className="section-label mb-3">Selected Work</p>
-                <h2 className="text-display-sm md:text-display font-semibold text-primary">
-                  Case Studies
-                </h2>
-              </div>
-              <p className="hidden md:block text-body text-secondary max-w-xs text-right">
-                From app monetization to vibe coding.
-              </p>
-            </div>
-          </SectionReveal>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-            {caseStudies.map((study, i) => (
-              <CaseStudyCard key={study.slug} study={study} index={i} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-
     </>
+  )
+}
+
+function SiteThumb({ site }: { site: (typeof sites)[number] }) {
+  // No href means an unfilled slot: it holds the grid position but is not a link.
+  const isPlaceholder = !site.href
+  const isInternal = Boolean(site.href?.startsWith('/'))
+
+  const content = (
+    <>
+      <div
+        className={
+          isPlaceholder
+            ? 'relative flex aspect-[16/9] w-full items-center justify-center border-2 border-dashed border-neutral-300 bg-neutral-100'
+            : 'relative aspect-[16/9] w-full overflow-hidden bg-neutral-200 ring-1 ring-black/5 transition-transform duration-300 group-hover:-translate-y-1'
+        }
+      >
+        {site.thumbnail ? (
+          <Image
+            src={site.thumbnail}
+            alt={`${site.url} homepage`}
+            fill
+            sizes="(max-width: 768px) 45vw, 30vw"
+            className="object-cover"
+          />
+        ) : (
+          <span
+            className="px-2 text-center text-neutral-400"
+            style={{ fontSize: 'clamp(0.7rem, 0.95cqw, 0.95rem)' }}
+          >
+            {site.url}
+          </span>
+        )}
+      </div>
+
+      <div className="mt-3">
+        {/* clamped, not raw cqw — at 375px a bare cqw size computes to ~4px */}
+        <p
+          className={`font-sans font-medium ${
+            isPlaceholder
+              ? 'text-neutral-400'
+              : 'text-[#222222] transition-colors group-hover:text-[#F40014]'
+          }`}
+          style={{ fontSize: 'clamp(0.75rem, 1.15cqw, 1.05rem)' }}
+        >
+          {site.url}
+          {site.category && (
+            <>
+              {' '}
+              <span
+                className="inline-block whitespace-nowrap font-normal text-neutral-500"
+                style={{ fontSize: 'clamp(0.7rem, 0.95cqw, 0.95rem)' }}
+              >
+                ({site.category})
+              </span>
+            </>
+          )}
+        </p>
+        <p
+          className="mt-1 font-sans leading-snug text-neutral-500"
+          style={{ fontSize: 'clamp(0.7rem, 0.95cqw, 0.95rem)' }}
+        >
+          {site.description}
+        </p>
+      </div>
+    </>
+  )
+
+  if (isPlaceholder) {
+    return <li>{content}</li>
+  }
+
+  return (
+    <li>
+      {isInternal ? (
+        <Link href={site.href!} className="group block">
+          {content}
+        </Link>
+      ) : (
+        <a
+          href={site.href!}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group block"
+        >
+          {content}
+        </a>
+      )}
+    </li>
   )
 }
