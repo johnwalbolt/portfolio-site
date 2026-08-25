@@ -18,7 +18,7 @@ export const sites: Site[] = [
     href: '/projects/soundbath',
     description:
       'A modern catalog site helping an ambient music producer showcase their full library to listeners and businesses alike.',
-    thumbnail: '/images/SoundBathOldHero.png',
+    thumbnail: '/images/SBHeroTumb825.png',
     category: 'Website',
   },
   {

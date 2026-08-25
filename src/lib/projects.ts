@@ -43,7 +43,7 @@ export const projects: Project[] = [
     name: 'soundbathvibrations.com',
     category: 'Website',
     liveUrl: 'https://soundbathvibrations.com',
-    heroImage: '/images/soundbath-hero5.png',
+    heroImage: '/images/SBHeroTumb825.png',
     highlights: [
       { label: 'Role', value: 'Designer & Builder' },
       { label: 'Team', value: 'Solo (working directly with stakeholders)' },
@@ -54,12 +54,12 @@ export const projects: Project[] = [
       'After discussions with the client, we agreed on an artistic direction that evoked the feel of visiting a modern museum using existing company visual assets. The idea was to have a bold first impression based on the company logo, that continued throughout the experience while becoming more subtle as the showcased work became the primary focus.',
     ],
     images: [
-      '/images/soundbath-museum.png',
+      '/images/SoundBath-Inspiration.png',
       '/images/soundbath-logosnew.png',
       '/images/soundbath-colorsnew.png',
-      '/images/soundbath-final1.png',
-      '/images/soundbath-final2.png',
-      '/images/soundbath-final4.png',
+      '/images/SBCatalog825.png',
+      '/images/SBCatalog2825.png',
+      '/images/SBConnect825.png',
     ],
   },
   {
