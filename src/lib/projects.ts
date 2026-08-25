@@ -108,7 +108,7 @@ export const projects: Project[] = [
     category: 'Consumer Mobile App',
     liveUrl: 'https://apps.apple.com/us/app/pocket-pitch-the-singer-app/id1005725401',
     liveUrlLabel: 'View on the App Store',
-    heroImage: '/images/PocketPitchHero.png',
+    heroImage: '/images/PocketPitchHero825.webp',
     highlights: [
       { label: 'Role', value: 'Founder & Designer' },
       {
@@ -121,9 +121,9 @@ export const projects: Project[] = [
       'This started in 2015 as a passion project \u2014 a simple tool for singers, and since then it has grown to 50k Monthly Active Users with a 4.6-star rating. Core users are singers of all skill levels (including a large percentage of choral singers) and of all technical abilities. The user experience design includes audio and visual interactions with haptic feedback and use of the device\u2019s microphone.',
     ],
     images: [
-      '/images/PocketPitchOnboarding.png',
-      '/images/PocketPitchWarmups.png',
-      '/images/PocketPitchPaywall.png',
+      '/images/PocketPitchOnboarding825.webp',
+      '/images/PocketPitchWarmups825.webp',
+      '/images/PocketPitchPaywall825.webp',
     ],
   },
   {

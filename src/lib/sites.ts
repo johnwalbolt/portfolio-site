@@ -42,7 +42,7 @@ export const sites: Site[] = [
     href: '/projects/pocket-pitch',
     description:
       'A pitch, metronome, and warmup app for singers, designed and shipped solo with AI-assisted development.',
-    thumbnail: '/images/PocketPitchHero.png',
+    thumbnail: '/images/PocketPitchHero825.webp',
     category: 'Consumer Mobile App',
   },
   {
