@@ -43,7 +43,7 @@ export const projects: Project[] = [
     name: 'soundbathvibrations.com',
     category: 'Website',
     liveUrl: 'https://soundbathvibrations.com',
-    heroImage: '/images/SBHeroTumb825.png',
+    heroImage: '/images/SBHeroTumb825.webp',
     highlights: [
       { label: 'Role', value: 'Designer & Builder' },
       { label: 'Team', value: 'Solo (working directly with stakeholders)' },
@@ -54,12 +54,12 @@ export const projects: Project[] = [
       'After discussions with the client, we agreed on an artistic direction that evoked the feel of visiting a modern museum using existing company visual assets. The idea was to have a bold first impression based on the company logo, that continued throughout the experience while becoming more subtle as the showcased work became the primary focus.',
     ],
     images: [
-      '/images/SoundBath-Inspiration.png',
+      '/images/SoundBath-Inspiration.webp',
       '/images/soundbath-logosnew.png',
       '/images/soundbath-colorsnew.png',
-      '/images/SBCatalog825.png',
-      '/images/SBCatalog2825.png',
-      '/images/SBConnect825.png',
+      '/images/SBCatalog825.webp',
+      '/images/SBCatalog2825.webp',
+      '/images/SBConnect825.webp',
     ],
   },
   {
@@ -87,7 +87,7 @@ export const projects: Project[] = [
     name: 'andrewheringer.com',
     category: 'Website',
     liveUrl: 'https://andrewheringer.com',
-    heroImage: '/images/AndrewOldHero.png',
+    heroImage: '/images/AHHeroThumb825.webp',
     highlights: [
       { label: 'Role', value: 'Designer & Builder' },
       { label: 'Team', value: 'Solo' },
@@ -97,9 +97,9 @@ export const projects: Project[] = [
       'The client needed a simple marketing website to offer essential contact information and redirection to other projects for visitors to explore. This project was designed in Figma and then built on Squarespace.',
     ],
     images: [
-      '/images/AndrewOld1.png',
-      '/images/AndrewOld2.png',
-      '/images/AndrewOld3.png',
+      '/images/AHMusic825.webp',
+      '/images/AHAbout825.webp',
+      '/images/AHContact825.webp',
     ],
   },
   {

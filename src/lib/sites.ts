@@ -18,7 +18,7 @@ export const sites: Site[] = [
     href: '/projects/soundbath',
     description:
       'A modern catalog site helping an ambient music producer showcase their full library to listeners and businesses alike.',
-    thumbnail: '/images/SBHeroTumb825.png',
+    thumbnail: '/images/SBHeroTumb825.webp',
     category: 'Website',
   },
   {
@@ -34,7 +34,7 @@ export const sites: Site[] = [
     href: '/projects/andrew-heringer',
     description:
       'An artist site for a music producer and singer/songwriter, designed and built around their releases and projects.',
-    thumbnail: '/images/AndrewOldHero.png',
+    thumbnail: '/images/AHHeroThumb825.webp',
     category: 'Website',
   },
   {
