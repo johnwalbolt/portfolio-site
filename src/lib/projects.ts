@@ -94,7 +94,8 @@ export const projects: Project[] = [
       { label: 'Client', value: 'Andrew Heringer' },
     ],
     summary: [
-      'The client needed a simple marketing website to offer essential contact information and redirection to other projects for visitors to explore. This project was designed in Figma and then built on Squarespace.',
+      'The client needed a simple marketing website to offer essential contact information and redirection to other projects for visitors to explore. This project was initially designed in Figma and then built on Squarespace.',
+      'A year later it was moved to GitHub Pages to save the client money on hosting, and also updated to enhance the visuals and design. This was done using Claude Code for the update and move, and then Web3Forms was used to make the contact form functional. Finally, the delivered website was set up so that the client could make small content updates to the website through their own Claude account. This was done by generating a PDF of instructions for the client, as well as an .md file they could upload to their Claude Code and automatically connect to the GitHub repo.',
     ],
     images: [
       '/images/AHMusic825.webp',
