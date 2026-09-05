@@ -8,6 +8,20 @@ export type Highlight = {
   value: string
 }
 
+export type CaseSection = {
+  label: string
+  heading: string
+  body: string
+  // Transparent artwork (diagrams, etc.) — skips the hairline frame.
+  unframedImages?: boolean
+  // Full-width image shown above the grid.
+  leadImage?: string
+  // none -> placeholder box; one -> full width; several -> a grid.
+  // All render at their own aspect ratio, uncropped.
+  images?: string[]
+  caption?: string
+}
+
 export type Project = {
   slug: string
   name: string
@@ -19,6 +33,8 @@ export type Project = {
   heroImage: string | null
   highlights: Highlight[]
   summary: string[]
+  // Full-width image between the summary and the supporting grid.
+  sections?: CaseSection[]
   // Three supporting images, shown 16:9 to match the homepage thumbnails.
   images: (string | null)[]
 }
@@ -51,16 +67,70 @@ export const projects: Project[] = [
     ],
     summary: [
       'Sound Bath is a category-leading music producer with a strong presence across all major streaming platforms. Prior to this project they didn\u2019t have a website, and also lacked a central hub for showcasing their catalog and connecting with listeners.',
-      'After discussions with the client, we agreed on an artistic direction that evoked the feel of visiting a modern museum using existing company visual assets. The idea was to have a bold first impression based on the company logo, that continued throughout the experience while becoming more subtle as the showcased work became the primary focus.',
+      '**The project resulted in an increase in user communications via the website.** The website was built and delivered by myself, and set up so that the client could make minor updates on their own using AI.',
     ],
-    images: [
-      '/images/SoundBath-Inspiration.webp',
-      '/images/soundbath-logosnew.png',
-      '/images/soundbath-colorsnew.png',
-      '/images/SBCatalog825.webp',
-      '/images/SBCatalog2825.webp',
-      '/images/SBConnect825.webp',
+    sections: [
+      {
+        label: 'The Problem',
+        heading: 'A central hub, and an invitation to connect.',
+        body: 'Sound Bath had a rich catalog of ambient music and sounds but no dedicated platform to showcase it. Their existing presence didn\u2019t communicate the depth of their catalog or make it easy for their two audience segments to explore and connect.',
+        images: [
+          '/images/soundbath-youtube2.webp',
+          '/images/soundbath-spotify2.webp',
+        ],
+      },
+      {
+        label: 'Users',
+        heading: 'Listeners and small businesses.',
+        body: 'Individual listeners stream from the audio catalog as labeled for meditation, sleep, or starting the day. Small businesses use audio tracks to create the atmosphere for locations like yoga studios, daycares, or art installations.',
+        images: ['/images/5users.webp'],
+      },
+      {
+        label: 'User Flows',
+        heading: 'User journeys from streaming to the new website.',
+        body: 'We laid out the journeys of their users searching or browsing for music and potentially wanting more information about the brand. We established that if a user made it to the website, they were there intentionally to learn or connect, and that aligned with the client\u2019s goals of educating users on their catalog and encouraging more communication.',
+        images: ['/images/sb-userflow1.webp'],
+        unframedImages: true,
+      },
+      {
+        label: 'Wireframes',
+        heading: 'The framework for education and connection.',
+        body: 'Lo-Fi wireframes were used to cement the hierarchy of goals and information for the client, while tying it back to the user flows.',
+        images: ['/images/sb-frames.webp'],
+        unframedImages: true,
+      },
+      {
+        label: 'Visual Assets',
+        heading: 'Building upon existing branding.',
+        body: 'Sound Bath already had a great logo, some colors, and preferred fonts. I added some more colors and font styles (based on their existing ones) to cover everything I would need for the UI Designs.',
+        images: [
+          '/images/soundbath-logosnew.png',
+          '/images/soundbath-colorsnew.png',
+          '/images/soundbath-fonthierarchynew.png',
+        ],
+      },
+      {
+        label: 'UI Design',
+        heading: 'Like stepping into a modern museum...',
+        body: 'After discussions with the client, we agreed on an artistic direction that evoked the feel of visiting a modern museum using existing company visual assets. The idea was to have a bold first impression based on the company logo, that continued throughout the experience while becoming more subtle as the showcased work became the primary focus.',
+        leadImage: '/images/SoundBath-Inspiration.webp',
+        images: [
+          '/images/SBHeroTumb825.webp',
+          '/images/SBCatalog825.webp',
+          '/images/SBConnect825.webp',
+          '/images/SBCatalog2825.webp',
+        ],
+      },
+      {
+        label: 'Delivery',
+        heading: 'Using AI to complete the project.',
+        body: 'I built the final website using Claude Code, deployed it to a designated GitHub repo, set up and connected a Web3Forms account for the contact form, and then connected the domain. Since the client is actually a Claude Code user as well, I was able to add them as a Collaborator for the GitHub repo and then provide them with a .md file so that their Claude Code could connect directly to the website to make subtle changes to content without me.',
+        // no image for this section
+        images: [],
+      },
     ],
+    // every supporting image now lives in a section above
+    images: [],
   },
   {
     slug: 'ovata',

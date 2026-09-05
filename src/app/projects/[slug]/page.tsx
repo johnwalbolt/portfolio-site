@@ -35,6 +35,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
       }
       highlights={project.highlights}
       summary={project.summary}
+      sections={project.sections}
       images={project.images}
     />
   )

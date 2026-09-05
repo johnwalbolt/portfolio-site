@@ -1,7 +1,28 @@
 import type { ReactNode } from 'react'
 import Link from 'next/link'
 import ZoomableImage from '@/components/ZoomableImage'
-import type { Highlight } from '@/lib/projects'
+import SectionDots from '@/components/SectionDots'
+import type { CaseSection, Highlight } from '@/lib/projects'
+
+// Section anchors: derived from the label so the dot rail and the sections
+// cannot drift apart.
+const OVERVIEW_ID = 'overview'
+const sectionId = (label: string, i: number) =>
+  `${label.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}-${i}`
+
+// Summary paragraphs are plain strings so the data stays serialisable, so
+// **double asterisks** mark an emphasised span rather than embedding JSX.
+function renderEmphasis(text: string) {
+  return text.split(/(\*\*[^*]+\*\*)/g).map((part, i) =>
+    part.startsWith('**') && part.endsWith('**') ? (
+      <strong key={i} className="font-semibold text-primary">
+        {part.slice(2, -2)}
+      </strong>
+    ) : (
+      part
+    ),
+  )
+}
 
 // Every image slot is 16:9 to match the homepage thumbnails.
 export function ProjectImage({
@@ -18,7 +39,7 @@ export function ProjectImage({
       <ZoomableImage
         src={src}
         alt={alt}
-        className="aspect-[16/9] w-full bg-neutral-100 object-cover ring-1 ring-black/5"
+        className="aspect-[16/9] w-full object-cover ring-1 ring-black/5"
       />
     )
   }
@@ -42,6 +63,7 @@ export default function CaseStudyLayout({
   leadWithSummary = false,
   highlights,
   summary,
+  sections,
   images,
 }: {
   name: string
@@ -53,11 +75,26 @@ export default function CaseStudyLayout({
   leadWithSummary?: boolean
   highlights?: Highlight[]
   summary: string[]
+  // Titled sections between the summary and the supporting grid. Each is
+  // divided by a rule and carries its own full-width image.
+  sections?: CaseSection[]
   images: (string | null)[]
 }) {
   return (
     <section className="pt-32 md:pt-44 pb-section-sm">
-      <div className="container-main">
+      {sections && sections.length > 0 && (
+        <SectionDots
+          targets={[
+            { id: OVERVIEW_ID, label: 'Overview' },
+            ...sections.map((section, i) => ({
+              id: sectionId(section.label, i),
+              label: section.label,
+            })),
+          ]}
+        />
+      )}
+
+      <div className="container-main" id={OVERVIEW_ID}>
         <Link
           href="/"
           className="text-caption text-secondary hover:text-primary transition-colors"
@@ -88,7 +125,7 @@ export default function CaseStudyLayout({
             <p className="section-label mb-4">Summary</p>
             <div className="space-y-4 text-body text-secondary">
               {summary.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
+                <p key={paragraph}>{renderEmphasis(paragraph)}</p>
               ))}
             </div>
           </div>
@@ -121,7 +158,7 @@ export default function CaseStudyLayout({
                 <p className="section-label mb-4">Summary</p>
                 <div className="space-y-4 text-body text-secondary">
                   {summary.map((paragraph) => (
-                    <p key={paragraph}>{paragraph}</p>
+                    <p key={paragraph}>{renderEmphasis(paragraph)}</p>
                   ))}
                 </div>
               </div>
@@ -133,12 +170,97 @@ export default function CaseStudyLayout({
               <p className="section-label mb-4">Summary</p>
               <div className="space-y-4 text-body text-secondary">
                 {summary.map((paragraph) => (
-                  <p key={paragraph}>{paragraph}</p>
+                  <p key={paragraph}>{renderEmphasis(paragraph)}</p>
                 ))}
               </div>
             </div>
           )
         )}
+
+        {sections?.map((section, i) => {
+          // Every section opens with a rule; the last also closes with one, so
+          // the run reads as a bounded group rather than trailing off.
+          const isLast = i === sections.length - 1
+          // Diagrams and artwork are transparent, so the hairline frame
+          // would outline empty space rather than the image itself.
+          const frame = section.unframedImages ? '' : ' ring-1 ring-black/5'
+          return (
+            <div
+              key={`${section.label}-${i}`}
+              id={sectionId(section.label, i)}
+              className={`scroll-mt-24 mt-12 border-t border-border pt-12 md:mt-16 md:pt-16 ${
+                isLast ? 'border-b border-border pb-12 md:pb-16' : ''
+              }`}
+            >
+              <div className="max-w-2xl">
+                <p className="section-label mb-3">{section.label}</p>
+                <h2 className="text-heading md:text-display-sm mb-6 font-semibold text-primary">
+                  {section.heading}
+                </h2>
+                <p className="text-body-lg text-secondary">{section.body}</p>
+              </div>
+
+              {/* leadImage runs full width above the grid. An omitted `images`
+                  means "not filled in yet" and shows a placeholder; an explicit
+                  [] means this section has no grid. */}
+              {(section.leadImage ||
+                section.images === undefined ||
+                section.images.length > 0) && (
+                <figure className="mt-8 md:mt-10">
+                  {section.leadImage && (
+                    <ZoomableImage
+                      src={section.leadImage}
+                      alt={`${name} — ${section.heading}`}
+                      className={`w-full${frame}`}
+                    />
+                  )}
+
+                  {section.images === undefined && !section.leadImage && (
+                    <div className="flex aspect-[16/9] w-full items-center justify-center border-2 border-dashed border-neutral-300 bg-neutral-100">
+                      <span className="text-caption text-neutral-400">Section image</span>
+                    </div>
+                  )}
+
+                  {section.images && section.images.length === 1 && (
+                    <ZoomableImage
+                      src={section.images[0]}
+                      alt={`${name} — ${section.heading}`}
+                      className={`w-full${frame} ${
+                        section.leadImage ? 'mt-6' : ''
+                      }`}
+                    />
+                  )}
+
+                  {section.images && section.images.length > 1 && (
+                    // Images keep their own aspect rather than being forced to
+                    // 16:9 — sources range from portrait screenshots to wide
+                    // brand boards. items-start aligns a mixed row at the top.
+                    <div
+                      className={`grid grid-cols-1 items-start gap-6 ${
+                        section.leadImage ? 'mt-6' : ''
+                      } ${section.images.length % 3 === 0 ? 'sm:grid-cols-3' : 'sm:grid-cols-2'}`}
+                    >
+                      {section.images.map((image, j) => (
+                        <ZoomableImage
+                          key={image}
+                          src={image}
+                          alt={`${name} — ${section.heading} ${j + 1}`}
+                          className={`w-full${frame}`}
+                        />
+                      ))}
+                    </div>
+                  )}
+
+                  {section.caption && (
+                    <figcaption className="mt-3 text-caption text-secondary">
+                      {section.caption}
+                    </figcaption>
+                  )}
+                </figure>
+              )}
+            </div>
+          )
+        })}
 
         {/* Supporting images */}
         {images.length > 0 && (
