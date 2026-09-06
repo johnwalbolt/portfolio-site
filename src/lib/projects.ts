@@ -8,10 +8,30 @@ export type Highlight = {
   value: string
 }
 
+export type VideoClip = {
+  src: string
+  webm?: string
+  poster: string
+}
+
+// A recorded walkthrough of the live site. Either width may be omitted: the
+// hero runs the desktop clip alone, the Delivery section the phone alone.
+// When both are present they play together, desktop leading.
+export type SectionVideo = {
+  desktop?: VideoClip
+  mobile?: VideoClip
+  // Describes what the clip shows, for the caption and the accessible label.
+  alt: string
+  // Shown under the phone clip when it appears beside or without the desktop one.
+  mobileNote?: string
+}
+
 export type CaseSection = {
   label: string
   heading: string
   body: string
+  // A screen recording shown above the image grid.
+  video?: SectionVideo
   // Transparent artwork (diagrams, etc.) — skips the hairline frame.
   unframedImages?: boolean
   // Full-width image shown above the grid.
@@ -31,6 +51,8 @@ export type Project = {
   // Defaults to "Visit the live site" when omitted.
   liveUrlLabel?: string
   heroImage: string | null
+  // Takes the hero slot in place of heroImage when present.
+  heroVideo?: SectionVideo
   highlights: Highlight[]
   summary: string[]
   // Full-width image between the summary and the supporting grid.
@@ -60,6 +82,14 @@ export const projects: Project[] = [
     category: 'Website',
     liveUrl: 'https://soundbathvibrations.com',
     heroImage: '/images/SBHeroTumb825.webp',
+    heroVideo: {
+      desktop: {
+        src: '/videos/soundbath-scroll-desktop.mp4',
+        webm: '/videos/soundbath-scroll-desktop.webm',
+        poster: '/videos/soundbath-scroll-desktop-poster.jpg',
+      },
+      alt: 'The shipped site loading from black, then scrolling top to bottom through the hero, catalog, connect, and about sections.',
+    },
     highlights: [
       { label: 'Role', value: 'Designer & Builder' },
       { label: 'Team', value: 'Solo (working directly with stakeholders)' },
@@ -72,7 +102,7 @@ export const projects: Project[] = [
     sections: [
       {
         label: 'The Problem',
-        heading: 'A central hub, and an invitation to connect.',
+        heading: 'No central hub or invite to connect.',
         body: 'Sound Bath had a rich catalog of ambient music and sounds but no dedicated platform to showcase it. Their existing presence didn\u2019t communicate the depth of their catalog or make it easy for their two audience segments to explore and connect.',
         images: [
           '/images/soundbath-youtube2.webp',
@@ -125,7 +155,19 @@ export const projects: Project[] = [
         label: 'Delivery',
         heading: 'Using AI to complete the project.',
         body: 'I built the final website using Claude Code, deployed it to a designated GitHub repo, set up and connected a Web3Forms account for the contact form, and then connected the domain. Since the client is actually a Claude Code user as well, I was able to add them as a Collaborator for the GitHub repo and then provide them with a .md file so that their Claude Code could connect directly to the website to make subtle changes to content without me.',
-        // no image for this section
+        // Only the phone width here — the desktop walkthrough is now the hero,
+        // and running it twice on one page would be a duplicate, not a point.
+        video: {
+          mobile: {
+            src: '/videos/soundbath-scroll-mobile.mp4',
+            webm: '/videos/soundbath-scroll-mobile.webm',
+            poster: '/videos/soundbath-scroll-mobile-poster.jpg',
+          },
+          alt: 'The same pass at 390px wide.',
+          mobileNote:
+            'The same pass at 390px, where the layout stacks and the wave artwork crops in behind the cards.',
+        },
+        // the walkthrough above stands in for the stills here
         images: [],
       },
     ],

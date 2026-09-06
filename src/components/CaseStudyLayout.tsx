@@ -2,6 +2,7 @@ import type { ReactNode } from 'react'
 import Link from 'next/link'
 import ZoomableImage from '@/components/ZoomableImage'
 import SectionDots from '@/components/SectionDots'
+import SiteScrollVideo from '@/components/SiteScrollVideo'
 import type { CaseSection, Highlight } from '@/lib/projects'
 
 // Section anchors: derived from the label so the dot rail and the sections
@@ -199,6 +200,12 @@ export default function CaseStudyLayout({
                 </h2>
                 <p className="text-body-lg text-secondary">{section.body}</p>
               </div>
+
+              {/* A recorded walkthrough sits above the still grid, since it
+                  carries the motion the stills can only imply. */}
+              {section.video && (
+                <SiteScrollVideo video={section.video} className="mt-8 md:mt-10" />
+              )}
 
               {/* leadImage runs full width above the grid. An omitted `images`
                   means "not filled in yet" and shows a placeholder; an explicit

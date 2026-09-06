@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation'
 import CaseStudyLayout, { ProjectImage } from '@/components/CaseStudyLayout'
+import SiteScrollVideo from '@/components/SiteScrollVideo'
 import { projects } from '@/lib/projects'
 
 export function generateStaticParams() {
@@ -27,11 +28,15 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
       liveUrl={project.liveUrl}
       liveUrlLabel={project.liveUrlLabel}
       hero={
-        <ProjectImage
-          src={project.heroImage}
-          alt={`${project.name} hero`}
-          label="Hero image"
-        />
+        project.heroVideo ? (
+          <SiteScrollVideo video={project.heroVideo} showControl={false} showCaption={false} />
+        ) : (
+          <ProjectImage
+            src={project.heroImage}
+            alt={`${project.name} hero`}
+            label="Hero image"
+          />
+        )
       }
       highlights={project.highlights}
       summary={project.summary}
