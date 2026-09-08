@@ -3,6 +3,7 @@ import Link from 'next/link'
 import ZoomableImage from '@/components/ZoomableImage'
 import SectionDots from '@/components/SectionDots'
 import SiteScrollVideo from '@/components/SiteScrollVideo'
+import ImageCycle from '@/components/ImageCycle'
 import type { CaseSection, Highlight } from '@/lib/projects'
 
 // Section anchors: derived from the label so the dot rail and the sections
@@ -200,6 +201,18 @@ export default function CaseStudyLayout({
                 </h2>
                 <p className="text-body-lg text-secondary">{section.body}</p>
               </div>
+
+              {section.imageCycle && (
+                // Half the container width and centred: the source panels are
+                // 939px, so at 1136 they were upscaled and visibly soft. At 568
+                // they render below native size and stay sharp.
+                <ImageCycle
+                  images={section.imageCycle}
+                  alt={`${name} — ${section.heading}`}
+                  caption={section.imageCycleCaption}
+                  className="mx-auto mt-8 w-full max-w-[568px] md:mt-10"
+                />
+              )}
 
               {/* A recorded walkthrough sits above the still grid, since it
                   carries the motion the stills can only imply. */}

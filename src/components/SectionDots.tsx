@@ -78,7 +78,7 @@ export default function SectionDots({ targets }: { targets: DotTarget[] }) {
       aria-label="Sections"
       className="fixed left-5 top-1/2 z-40 hidden -translate-y-1/2 xl:block"
     >
-      <ul className="flex flex-col items-center gap-4">
+      <ul className="flex flex-col items-start gap-4">
         {targets.map((target) => {
           const isActive = target.id === active
           return (
@@ -86,19 +86,32 @@ export default function SectionDots({ targets }: { targets: DotTarget[] }) {
               <button
                 type="button"
                 onClick={() => goTo(target.id)}
+                // Kept even though the label is visible: below 2xl that span is
+                // display:none, which would leave the button with no name.
                 aria-label={target.label}
                 aria-current={isActive ? 'true' : undefined}
-                className="group relative flex h-4 w-4 items-center justify-center rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                className="group flex items-center gap-2.5 rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
               >
+                <span className="flex h-4 w-4 shrink-0 items-center justify-center">
+                  <span
+                    className={`block rounded-full transition-all duration-300 ${
+                      isActive
+                        ? 'h-2.5 w-2.5 bg-primary'
+                        : 'h-1.5 w-1.5 bg-neutral-300 group-hover:bg-neutral-500'
+                    }`}
+                  />
+                </span>
+                {/* Label tracks the dot's colour: light grey at rest, darker on
+                    hover, primary when this is the section you're in.
+                    From 1440 only. Measured against the text edge (the
+                    container carries 32px of padding of its own), the labelled
+                    rail clears the content by 37px at 1440, but overlaps it by
+                    3px at 1360 and 43px at 1280. */}
                 <span
-                  className={`block rounded-full transition-all duration-300 ${
-                    isActive
-                      ? 'h-2.5 w-2.5 bg-primary'
-                      : 'h-1.5 w-1.5 bg-neutral-300 group-hover:bg-neutral-500'
+                  className={`hidden whitespace-nowrap text-[11px] leading-none transition-colors duration-300 min-[1440px]:inline ${
+                    isActive ? 'text-primary' : 'text-neutral-500 group-hover:text-neutral-700'
                   }`}
-                />
-                {/* label on hover/focus, so the dots are identifiable */}
-                <span className="pointer-events-none absolute left-6 whitespace-nowrap rounded bg-primary px-2 py-1 text-caption text-white opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">
+                >
                   {target.label}
                 </span>
               </button>

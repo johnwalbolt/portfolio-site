@@ -26,10 +26,20 @@ export type SectionVideo = {
   mobileNote?: string
 }
 
+// One frame of a cycling screenshot set. `label` doubles as its control.
+export type CycleImage = {
+  src: string
+  label: string
+}
+
 export type CaseSection = {
   label: string
   heading: string
   body: string
+  // Screenshots that cycle in place, shown instead of the placeholder or grid.
+  imageCycle?: CycleImage[]
+  // Leads the row of platform labels under the cycle.
+  imageCycleCaption?: string
   // A screen recording shown above the image grid.
   video?: SectionVideo
   // Transparent artwork (diagrams, etc.) — skips the hairline frame.
@@ -92,7 +102,7 @@ export const projects: Project[] = [
     },
     highlights: [
       { label: 'Role', value: 'Designer & Builder' },
-      { label: 'Team', value: 'Solo (working directly with stakeholders)' },
+      { label: 'Team', value: 'Solo' },
       { label: 'Client', value: 'Sound Bath' },
     ],
     summary: [
@@ -102,12 +112,17 @@ export const projects: Project[] = [
     sections: [
       {
         label: 'The Problem',
-        heading: 'No central hub or invite to connect.',
-        body: 'Sound Bath had a rich catalog of ambient music and sounds but no dedicated platform to showcase it. Their existing presence didn\u2019t communicate the depth of their catalog or make it easy for their two audience segments to explore and connect.',
-        images: [
-          '/images/soundbath-youtube2.webp',
-          '/images/soundbath-spotify2.webp',
+        heading: 'No center or connection.',
+        body: 'Sound Bath had a rich catalog of ambient music and sounds, but the streaming platforms had a rigid format for showcasing the offerings with a lack of personal communication to their listeners.',
+        imageCycleCaption: 'Streaming Presence:',
+        imageCycle: [
+          { src: '/images/soundbath-platform-bandcamp.webp', label: 'Bandcamp' },
+          { src: '/images/soundbath-platform-amazon.webp', label: 'Amazon' },
+          { src: '/images/soundbath-platform-apple.webp', label: 'Apple' },
+          { src: '/images/soundbath-platform-spotify.webp', label: 'Spotify' },
+          { src: '/images/soundbath-platform-youtube.webp', label: 'YouTube' },
         ],
+        images: [],
       },
       {
         label: 'Users',
@@ -155,19 +170,6 @@ export const projects: Project[] = [
         label: 'Delivery',
         heading: 'Using AI to complete the project.',
         body: 'I built the final website using Claude Code, deployed it to a designated GitHub repo, set up and connected a Web3Forms account for the contact form, and then connected the domain. Since the client is actually a Claude Code user as well, I was able to add them as a Collaborator for the GitHub repo and then provide them with a .md file so that their Claude Code could connect directly to the website to make subtle changes to content without me.',
-        // Only the phone width here — the desktop walkthrough is now the hero,
-        // and running it twice on one page would be a duplicate, not a point.
-        video: {
-          mobile: {
-            src: '/videos/soundbath-scroll-mobile.mp4',
-            webm: '/videos/soundbath-scroll-mobile.webm',
-            poster: '/videos/soundbath-scroll-mobile-poster.jpg',
-          },
-          alt: 'The same pass at 390px wide.',
-          mobileNote:
-            'The same pass at 390px, where the layout stacks and the wave artwork crops in behind the cards.',
-        },
-        // the walkthrough above stands in for the stills here
         images: [],
       },
     ],

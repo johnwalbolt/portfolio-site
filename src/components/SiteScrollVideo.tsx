@@ -43,7 +43,16 @@ export default function SiteScrollVideo({
     // No seeking here. Setting currentTime on a preload="none" element that
     // hasn't loaded yet aborts the load and leaves it stuck at HAVE_METADATA,
     // so playback is requested first and the clips are aligned once running.
-    each((v) => void v.play().catch(() => {}))
+    each((v) => {
+      // A pause() that lands while the element is still fetching — which is
+      // what scrolling past a not-yet-loaded clip does — aborts the request and
+      // strands it at HAVE_METADATA with an idle network and no retry. Coming
+      // back into view has to kick the load off again, or it never recovers.
+      if (v.readyState < v.HAVE_FUTURE_DATA && v.networkState === v.NETWORK_IDLE) {
+        v.load()
+      }
+      void v.play().catch(() => {})
+    })
   }, [])
 
   const pauseAll = useCallback(() => {
@@ -108,55 +117,79 @@ export default function SiteScrollVideo({
   const desktopSlot = video.desktop ? slot++ : -1
   const mobileSlot = video.mobile ? slot++ : -1
 
+  // With both widths present they sit side by side. The grow values are the
+  // clips' own aspect ratios (2272/1420 and 780/1688), so against a zero basis
+  // their widths land in that proportion and both come out the same height.
+  const pair = Boolean(video.desktop && video.mobile)
+
   return (
     <div ref={containerRef} className={className}>
-      {video.desktop && (
-        <div className="overflow-hidden ring-1 ring-black/5">
-          <video
-            ref={(el) => {
-              videosRef.current[desktopSlot] = el
-            }}
-            poster={video.desktop.poster}
-            muted
-            loop
-            playsInline
-            preload="none"
-            aria-label={`${video.alt} — desktop`}
-            className="block h-auto w-full"
+      <div className={pair ? 'flex flex-col items-center gap-6 sm:flex-row sm:items-start' : ''}>
+        {video.desktop && (
+          <div
+            className={`w-full overflow-hidden ring-1 ring-black/5 ${
+              pair ? 'sm:basis-0 sm:grow-[1.600]' : ''
+            }`}
           >
-            {video.desktop.webm && <source src={video.desktop.webm} type="video/webm" />}
-            <source src={video.desktop.src} type="video/mp4" />
-          </video>
-        </div>
-      )}
-
-      {video.mobile && (
-        <div
-          className={`flex flex-col items-start gap-5 sm:flex-row sm:items-end ${
-            video.desktop ? 'mt-6' : ''
-          }`}
-        >
-          <div className="w-[220px] shrink-0 overflow-hidden ring-1 ring-black/5 sm:w-[260px]">
             <video
               ref={(el) => {
-                videosRef.current[mobileSlot] = el
+                videosRef.current[desktopSlot] = el
               }}
-              poster={video.mobile.poster}
+              poster={video.desktop.poster}
               muted
               loop
               playsInline
               preload="none"
-              aria-label={`${video.alt} — mobile`}
+              aria-label={`${video.alt} — desktop`}
               className="block h-auto w-full"
             >
-              {video.mobile.webm && <source src={video.mobile.webm} type="video/webm" />}
-              <source src={video.mobile.src} type="video/mp4" />
+              {video.desktop.webm && <source src={video.desktop.webm} type="video/webm" />}
+              <source src={video.desktop.src} type="video/mp4" />
             </video>
           </div>
-          {video.mobileNote && (
-            <p className="text-caption text-secondary sm:pb-1">{video.mobileNote}</p>
-          )}
-        </div>
+        )}
+
+        {video.mobile && (
+          <div
+            className={
+              pair
+                ? 'w-full max-w-[280px] overflow-hidden ring-1 ring-black/5 sm:max-w-none sm:basis-0 sm:grow-[0.462]'
+                : 'flex flex-col items-start gap-5 sm:flex-row sm:items-end'
+            }
+          >
+            <div
+              className={
+                pair
+                  ? ''
+                  : 'w-[220px] shrink-0 overflow-hidden ring-1 ring-black/5 sm:w-[260px]'
+              }
+            >
+              <video
+                ref={(el) => {
+                  videosRef.current[mobileSlot] = el
+                }}
+                poster={video.mobile.poster}
+                muted
+                loop
+                playsInline
+                preload="none"
+                aria-label={`${video.alt} — mobile`}
+                className="block h-auto w-full"
+              >
+                {video.mobile.webm && <source src={video.mobile.webm} type="video/webm" />}
+                <source src={video.mobile.src} type="video/mp4" />
+              </video>
+            </div>
+            {/* Beside the phone when it stands alone; below the row when paired. */}
+            {video.mobileNote && !pair && (
+              <p className="text-caption text-secondary sm:pb-1">{video.mobileNote}</p>
+            )}
+          </div>
+        )}
+      </div>
+
+      {video.mobileNote && pair && (
+        <p className="mt-3 text-caption text-secondary">{video.mobileNote}</p>
       )}
 
       {(showControl || showCaption) && (
